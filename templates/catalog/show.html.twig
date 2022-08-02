@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Catalog'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Catalog'|trans }}</h1>
+    {% if catalog is defined and catalog|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'Id'|trans }}</dt>
+            <dd>{{ catalog.Id }}</dd>
+            <dt>{{ 'Title'|trans }}</dt>
+            <dd>{{ catalog.Name }}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('catalog_index') }}" title="{{ 'back to list'|trans }}">
+                {{ 'back'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'Empty'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

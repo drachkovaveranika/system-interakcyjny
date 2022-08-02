@@ -1,0 +1,6 @@
+{% include 'default/_form.html.twig' with {
+    page_title: 'Delete book'|trans({'%id%': book.id|default('')}),
+    form: form,
+    submit_label: 'delete'|trans,
+    back_to_list_path: 'book_index',
+} %}

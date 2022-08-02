@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Books'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Books'|trans }}</h1>
+    {% if pagination is defined %}
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'Id'|trans, 'book.Id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Title'|trans, 'book.Title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Author'|trans, 'book.Author') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Catalog'|trans, 'book.Catalog') }}</th>
+                <th>{{ 'Actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in pagination.items %}
+                <tr>
+                    <td>{{ book.Id }}</td>
+                    <td>{{ book.Title }}</td>
+                    <td>{{ book.Author }}</td>
+                    <td>{{ book.Catalog.name }}</td>
+                    <td>
+                        <a href="{{ url('book_show', {id: book.Id }) }}" title="{{ 'See'|trans }}">
+                            {{ 'Show'|trans }}
+                        </a>
+                        <a href="{{ url('book_edit', {id: book.Id }) }}" title="{{ 'Edit'|trans }}">
+                            {{ 'Edit'|trans }}
+                        </a>
+                        <a href="{{ url('book_delete', {id: book.Id }) }}" title="{{ 'Delete'|trans }}">
+                            {{ 'Delete'|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <a href="{{ url('book_create',{id: random(200, 500) }) }}" title="{{ 'Create'|trans }}">
+            {{ 'Create'|trans }}
+        </a>
+    {% else %}
+        <p>
+            {{ 'Empty'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}
