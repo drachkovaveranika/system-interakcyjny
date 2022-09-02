@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="Title">
         <source>Title</source>
-        <target>Tytul</target>
+        <target>Tytuł</target>
       </trans-unit>
       <trans-unit id="Author">
         <source>Author</source>
@@ -114,6 +114,83 @@
                <source>name</source>
                <target>Nazwa</target>
       </trans-unit>
+      <trans-unit id="created successfully">
+                     <source>created successfully</source>
+                     <target>pomyślnie utworzono</target>
+            </trans-unit>
+
+      <trans-unit id="edited successfully">
+                     <source>edited successfully</source>
+                     <target>pomyślnie zedytowano</target>
+            </trans-unit>
+      <trans-unit id="deleted successfully">
+           <source>deleted successfully</source>
+           <target>pomyślnie usunięto</target>
+      </trans-unit>
+<trans-unit id="delete">
+    <source>delete</source>
+    <target>usuń</target>
+</trans-unit>
+<trans-unit id="Create new catalog">
+    <source>Create new catalog</source>
+    <target>Stwórz nowy katalog</target>
+</trans-unit>
+<trans-unit id="catalog delete">
+    <source>catalog delete</source>
+    <target>Usuń katalog</target>
+</trans-unit>
+<trans-unit id="edit">
+    <source>edit</source>
+    <target>Edytuj</target>
+</trans-unit>
+<trans-unit id="Create new comment">
+    <source>Create new comment</source>
+    <target>Stwórz nowy komentarz</target>
+</trans-unit>
+<trans-unit id="Delete comment">
+    <source>Delete comment</source>
+    <target>Usuń komentarz</target>
+</trans-unit>
+<trans-unit id="Edit comment">
+    <source>Edit comment</source>
+    <target>Edytuj komentarz</target>
+</trans-unit>
+<trans-unit id="Comments">
+    <source>Comments</source>
+    <target>Komentarze</target>
+</trans-unit>
+<trans-unit id="Context">
+    <source>Context</source>
+    <target>Treść</target>
+</trans-unit>
+<trans-unit id="Comment">
+    <source>Comment</source>
+    <target>Commentarz</target>
+</trans-unit>
+<trans-unit id="message.form_error">
+    <source>message.form_error</source>
+    <target>Błąd</target>
+</trans-unit>
+<trans-unit id="You are logged in as">
+    <source>You are logged in as</source>
+    <target>Jesteś zalogowany jak</target>
+</trans-unit>
+<trans-unit id="actin_logout">
+    <source>action_logout</source>
+    <target>Wyloguj</target>
+</trans-unit>
+<trans-unit id="actin_login">
+    <source>action_login</source>
+    <target>Zaloguj</target>
+</trans-unit>
+<trans-unit id="Logout">
+    <source>Logout</source>
+    <target>Wyloguj</target>
+</trans-unit>
+<trans-unit id="action_change_password">
+    <source>action_change_password</source>
+    <target>Zmień haslo</target>
+</trans-unit>
     </body>
 
   </file>

@@ -39,7 +39,6 @@ class Comment
      * )
      * @ORM\JoinTable(name="comments_books")
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\Collection")
      */
     #[ORM\ManyToOne(targetEntity: Book::class)]
     #[ORM\JoinColumn(nullable: false)]

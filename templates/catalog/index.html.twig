@@ -42,7 +42,7 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <a href="{{ url('catalog_create',{id: random(200, 500) }) }}" title="{{ 'Create'|trans }}">
+        <a href="{{ url('catalog_create') }}" title="{{ 'Create'|trans }}">
             {{ 'Create'|trans }}
         </a>
     {% else %}

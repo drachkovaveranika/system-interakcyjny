@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -54,7 +55,6 @@ class Book
      * )
      * @ORM\JoinTable(name="books_catalogs")
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\Collection")
      */
     #[ORM\ManyToOne(targetEntity: Catalog::class)]
     #[ORM\JoinColumn(nullable: false)]
@@ -128,5 +128,45 @@ class Book
     public function setCatalog(?Catalog $catalog): void
     {
         $this->catalog = $catalog;
+    }
+
+    /**
+     * Getter for created at.
+     *
+     * @return DateTimeImmutable|null Created at
+     */
+    public function getCreatedAt(): ?DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Setter for created at.
+     *
+     * @param DateTimeImmutable|null $createdAt Created at
+     */
+    public function setCreatedAt(?DateTimeImmutable $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Getter for updated at.
+     *
+     * @return DateTimeImmutable|null Updated at
+     */
+    public function getUpdatedAt(): ?DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Setter for updated at.
+     *
+     * @param DateTimeImmutable|null $updatedAt Updated at
+     */
+    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

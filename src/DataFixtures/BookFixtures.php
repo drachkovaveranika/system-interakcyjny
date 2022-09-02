@@ -6,8 +6,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Book;
+use DateTimeImmutable;
 use App\Entity\Catalog;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Persistence\ObjectManager;
 
 /**
  * Class BookFixtures.
@@ -35,7 +37,8 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $catalog = $this->getRandomReference('catalogs');
             $book->setCatalog($catalog);
 
-            return $book;
+
+            //return $book;
         });
 
         $this->manager->flush();

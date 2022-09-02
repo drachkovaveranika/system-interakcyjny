@@ -33,7 +33,10 @@ class CatalogType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'catalog.name',
+                'label' => '%Name%',
+                'label_translation_parameters' => [
+                    '%Name%' => 'Nazwa',
+                ],
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ]);

@@ -35,7 +35,10 @@ class BookType extends AbstractType
             'title',
             TextType::class,
             [
-                'label' => 'title',
+                'label' => '%title%',
+                'label_translation_parameters' => [
+                    '%title%' => 'Tytuł',
+                ],
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]);
@@ -43,7 +46,10 @@ class BookType extends AbstractType
             'author',
             TextType::class,
             [
-                'label' => 'author',
+                'label' => '%author%',
+                'label_translation_parameters' => [
+                    '%author%' => 'Autor',
+                ],
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]);
@@ -55,7 +61,10 @@ class BookType extends AbstractType
                 'choice_label' => function ($catalog): string {
                     return $catalog->getName();
                 },
-                'label' => 'catalog',
+                'label' => '%catalog%',
+                'label_translation_parameters' => [
+                    '%catalog%' => 'Katalog',
+                ],
                 'required' => false,
             ]
         );
