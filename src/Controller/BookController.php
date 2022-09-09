@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Book controller.
  */
@@ -67,7 +68,7 @@ class BookController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'book_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    #[Route('/{title}', name: 'book_show', methods: 'GET')]
     public function show(Book $book): Response
     {
         return $this->render('book/show.html.twig', ['book' => $book]);
@@ -80,7 +81,7 @@ class BookController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'book_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'book_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
         $book = new Book();

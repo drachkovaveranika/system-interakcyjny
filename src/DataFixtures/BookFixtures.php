@@ -9,7 +9,6 @@ use App\Entity\Book;
 use DateTimeImmutable;
 use App\Entity\Catalog;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
 
 /**
  * Class BookFixtures.
@@ -36,9 +35,11 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             /** @var Catalog $catalog */
             $catalog = $this->getRandomReference('catalogs');
             $book->setCatalog($catalog);
+            $book->setCreatedAt(
+                DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days'))
+            );
 
-
-            //return $book;
+            return $book;
         });
 
         $this->manager->flush();

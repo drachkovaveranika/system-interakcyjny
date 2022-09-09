@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Catalog Entity.
+ */
 namespace App\Entity;
 
 use App\Repository\CatalogRepository;
@@ -19,8 +22,6 @@ class Catalog
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,8 +30,6 @@ class Catalog
 
     /**
      * Name.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]

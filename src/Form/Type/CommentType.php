@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Comment type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\Book;
 use App\Entity\Comment;
+use App\Entity\Book;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -32,23 +33,54 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'context',
+            'nick',
             TextType::class,
             [
-                'label' => 'context',
+                'label' => '%nick%',
+                'label_translation_parameters' => [
+                    '%nick%' => 'nick',
+                ],
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
+            ]
+        );
         $builder->add(
-            'volume',
+            'email',
+            TextType::class,
+            [
+                'label' => '%email%',
+                'label_translation_parameters' => [
+                    '%email%' => 'email',
+                ],
+                'required' => true,
+                'attr' => ['max_length' => 255],
+            ]
+        );
+        $builder->add(
+            'book',
             EntityType::class,
             [
                 'class' => Book::class,
                 'choice_label' => function ($book): string {
                     return $book->getTitle();
                 },
-                'label' => 'book',
+                'label' => '%book%',
+                'label_translation_parameters' => [
+                    '%book%' => 'Ksiazka',
+                ],
                 'required' => true,
+            ]
+        );
+        $builder->add(
+            'context',
+            TextType::class,
+            [
+                'label' => '%context%',
+                'label_translation_parameters' => [
+                    '%context%' => 'Tresc',
+                ],
+                'required' => true,
+                'attr' => ['max_length' => 255],
             ]
         );
     }

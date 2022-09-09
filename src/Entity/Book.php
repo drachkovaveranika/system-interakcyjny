@@ -1,20 +1,29 @@
 <?php
 
+/*
+ * Book Entity.
+ */
+
 namespace App\Entity;
 
 use App\Repository\BookRepository;
-use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Book.
+ *
+ * @psalm-suppress MissingConstructor
+ */
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ORM\Table(name: 'books')]
 class Book
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,30 +32,24 @@ class Book
 
     /**
      * Title.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 5, max: 64)]
     private ?string $title = null;
 
     /**
      * Author.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 5, max: 64)]
     private ?string $author = null;
 
     /**
      * Catalog.
-     *
-     * @var Catalog|null
      *
      * @ORM\ManyToOne(
      *     targetEntity="App\Entity\Catalog",
@@ -54,11 +57,17 @@ class Book
      *     fetch="EXTRA_LAZY",
      * )
      * @ORM\JoinTable(name="books_catalogs")
-     *
      */
     #[ORM\ManyToOne(targetEntity: Catalog::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Catalog $catalog = null;
+
+    /**
+     * CreatedAt.
+     */
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    #[Gedmo\Timestampable(on: 'create')]
+    private ?DateTimeImmutable $createdAt;
 
     /**
      * Getter for Id.
@@ -148,25 +157,5 @@ class Book
     public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Getter for updated at.
-     *
-     * @return DateTimeImmutable|null Updated at
-     */
-    public function getUpdatedAt(): ?DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Setter for updated at.
-     *
-     * @param DateTimeImmutable|null $updatedAt Updated at
-     */
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
     }
 }

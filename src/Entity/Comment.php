@@ -1,18 +1,26 @@
 <?php
 
+/*
+ * Comment Entity.
+ */
+
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Comment.
+ *
+ * @psalm-suppress MissingConstructor
+ */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\Table(name: 'comments')]
 class Comment
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,16 +29,14 @@ class Comment
 
     /**
      * Context.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
     private ?string $context = null;
 
     /**
-     * Volume.
-     *
-     * @var Book|null
+     * Book.
      *
      * @ORM\ManyToOne(
      *     targetEntity="App\Entity\Book",
@@ -38,11 +44,28 @@ class Comment
      *     fetch="EXTRA_LAZY",
      * )
      * @ORM\JoinTable(name="comments_books")
-     *
      */
     #[ORM\ManyToOne(targetEntity: Book::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Book $volume = null;
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    private ?Book $book = null;
+
+    /**
+     * Nick.
+     */
+    #[ORM\Column(length: 15)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 5, max: 64)]
+    private ?string $nick = null;
+
+    /**
+     * Email.
+     */
+    #[ORM\Column(type: 'string', length: 45)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 5, max: 64)]
+    private ?string $email = null;
 
     /**
      * Getter for Id.
@@ -64,30 +87,73 @@ class Comment
         return $this->context;
     }
 
-    public function setContext(string $context): self
+    /**
+     * Setter for Context.
+     *
+     * @param string|null $context Context
+     */
+    public function setContext(?string $context): void
     {
         $this->context = $context;
-
-        return $this;
     }
 
     /**
-     * Getter for Volume.
+     * Getter for Book.
      *
-     * @return Book|null Volume
+     * @return Book|null Book
      */
-    public function getVolume(): ?Book
+    public function getBook(): ?Book
     {
-        return $this->volume;
+        return $this->book;
     }
 
     /**
-     * Setter for Volume.
+     * Setter for Book.
      *
-     * @param Book|null $volume Volume
+     * @param Book|null $book Book
      */
-    public function setVolume(?Book $volume): void
+    public function setBook(?Book $book): void
     {
-        $this->volume = $volume;
+        $this->book = $book;
+    }
+
+    /**
+     * Getter for Nick.
+     *
+     * @return string|null Nick
+     */
+    public function getNick(): ?string
+    {
+        return $this->nick;
+    }
+
+    /**
+     * Setter for Nick.
+     *
+     * @param string $nick Nick
+     */
+    public function setNick(?string $nick): void
+    {
+        $this->nick = $nick;
+    }
+
+    /**
+     * Getter for Email.
+     *
+     * @return string|null Email
+     */
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    /**
+     * Setter for Email.
+     *
+     * @param string $email Email
+     */
+    public function setEmail(?string $email): void
+    {
+        $this->email = $email;
     }
 }

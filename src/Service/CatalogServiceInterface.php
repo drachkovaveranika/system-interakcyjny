@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Catalog service interface.
  */
@@ -35,4 +36,5 @@ interface CatalogServiceInterface
      * @param Catalog $catalog Catalog entity
      */
     public function delete(Catalog $catalog): void;
+
 }

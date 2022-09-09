@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Catalog repository.
  */
@@ -54,18 +55,6 @@ class CatalogRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('catalog');
-    }
-
-    /**
      * Save entity.
      *
      * @param Catalog $catalog Catalog entity
@@ -85,5 +74,17 @@ class CatalogRepository extends ServiceEntityRepository
     {
         $this->_em->remove($catalog);
         $this->_em->flush();
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('catalog');
     }
 }

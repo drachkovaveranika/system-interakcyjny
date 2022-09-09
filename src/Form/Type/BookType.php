@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Book type.
  */
@@ -41,7 +42,8 @@ class BookType extends AbstractType
                 ],
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
+            ]
+        );
         $builder->add(
             'author',
             TextType::class,
@@ -52,7 +54,8 @@ class BookType extends AbstractType
                 ],
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
+            ]
+        );
         $builder->add(
             'catalog',
             EntityType::class,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Catalog type.
  */
@@ -39,7 +40,8 @@ class CatalogType extends AbstractType
                 ],
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ]);
+            ]
+        );
     }
 
     /**

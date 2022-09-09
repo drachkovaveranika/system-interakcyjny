@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Comment controller.
  */
@@ -63,7 +64,7 @@ class CommentController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'comment_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'comment_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
         $comment = new Comment();
@@ -154,7 +155,7 @@ class CommentController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'comment_delete', requirements: ['id' => '[1-9]\d*'], methods: 'POST|DELETE')]
+    #[Route('/{id}/delete', name: 'comment_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(

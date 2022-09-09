@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Comment repository.
  */
@@ -51,8 +52,7 @@ class CommentRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->select('book', 'comment')
-            ->join('comment.volume', 'book')
+            ->select('comment')
             ->orderBy('comment.id', 'ASC');
     }
 

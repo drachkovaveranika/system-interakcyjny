@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Comment fixtures.
  */
@@ -30,9 +31,11 @@ class CommentFixtures extends AbstractBaseFixtures implements DependentFixtureIn
         $this->createMany(100, 'comments', function (int $i) {
             $comment = new Comment();
             $comment->setContext($this->faker->text);
-            /** @var Book $volume */
-            $volume = $this->getRandomReference('books');
-            $comment->setVolume($volume);
+            /** @var Book $book */
+            $book = $this->getRandomReference('books');
+            $comment->setBook($book);
+            $comment->setNick($this->faker->word);
+            $comment->setEmail($this->faker->email);
 
             return $comment;
         });

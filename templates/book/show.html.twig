@@ -16,15 +16,12 @@
             <dd>{{ book.Author }}</dd>
             <dt>{{ 'Catalog'|trans }}</dt>
             <dd>{{  book.Catalog.name }}</dd>
+            <dt>{{ 'CreatedAt'|trans }}</dt>
+            <dd>{{  book.CreatedAt|date('Y.m.d') }}</dd>
         </dl>
         <p>
             <a href="{{ url('book_index') }}" title="{{ 'back to list'|trans }}">
                 {{ 'back'|trans }}
-            </a>
-        </p>
-        <p>
-            <a href="{{ url('comment_show', {id: book.id}) }}" title="{{ 'comments'|trans }}">
-                {{ 'comments'|trans }}
             </a>
         </p>
     {% else %}

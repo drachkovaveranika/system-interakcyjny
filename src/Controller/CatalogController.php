@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Catalog controller.
  */
@@ -85,7 +86,7 @@ class CatalogController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'catalog_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'catalog_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
         $catalog = new Catalog();

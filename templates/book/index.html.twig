@@ -18,6 +18,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'Title'|trans, 'book.Title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Author'|trans, 'book.Author') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Catalog'|trans, 'book.Catalog') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'CreatedAt'|trans, 'book.CreatedAt') }}</th>
                 <th>{{ 'Actions'|trans }}</th>
             </tr>
             </thead>
@@ -28,8 +29,9 @@
                     <td>{{ book.Title }}</td>
                     <td>{{ book.Author }}</td>
                     <td>{{ book.Catalog.name }}</td>
+                    <td>{{ book.CreatedAt|date('Y.m.d') }}</td>
                     <td>
-                        <a href="{{ url('book_show', {id: book.Id }) }}" title="{{ 'See'|trans }}">
+                        <a href="{{ url('book_show', {title: book.Title }) }}" title="{{ 'See'|trans }}">
                             {{ 'Show'|trans }}
                         </a>
                         <a href="{{ url('book_edit', {id: book.Id }) }}" title="{{ 'Edit'|trans }}">
@@ -46,9 +48,17 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <a href="{{ url('book_create') }}" title="{{ 'Create'|trans }}">
+        <p><a href="{{ url('book_create') }}" title="{{ 'Create'|trans }}">
             {{ 'Create'|trans }}
-        </a>
+        </a></p>
+
+        <p><a href="{{ url('catalog_index') }}" title="{{ 'Catalogs'|trans }}">
+            {{ 'Catalogs'|trans }}
+        </a></p>
+
+        <p><a href="{{ url('comment_index') }}" title="{{ 'Comments'|trans }}">
+            {{ 'Comments'|trans }}
+        </a></p>
     {% else %}
         <p>
             {{ 'Empty'|trans }}

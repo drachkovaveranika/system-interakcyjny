@@ -42,9 +42,25 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <a href="{{ url('catalog_create') }}" title="{{ 'Create'|trans }}">
-            {{ 'Create'|trans }}
-        </a>
+
+        <p>
+            <a href="{{ url('catalog_create') }}" title="{{ 'Create'|trans }}">
+                {{ 'Create'|trans }}
+            </a>
+        </p>
+
+        <p>
+            <a href="{{ url('book_index') }}" title="{{ 'Books'|trans }}">
+                {{ 'Books'|trans}}
+            </a>
+        </p>
+
+        <p>
+            <a href="{{ url('comment_index') }}" title="{{ 'Comments'|trans }}">
+                {{ 'Comments'|trans }}
+            </a>
+        </p>
+
     {% else %}
         <p>
             {{ 'Empty'|trans }}

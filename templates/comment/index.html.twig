@@ -11,11 +11,16 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
+        <a href="{{ url('comment_create') }}" title="{{ 'Create'|trans }}">
+            {{ 'Create'|trans }}
+        </a>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'Id'|trans, 'comment.Id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Nick'|trans, 'comment.Nick') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Context'|trans, 'comment.context') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Books'|trans, 'comment.Book.title') }}</th>
                 <th>{{ 'Actions'|trans }}</th>
             </tr>
             </thead>
@@ -23,7 +28,9 @@
             {% for comment in pagination.items %}
                 <tr>
                     <td>{{ comment.Id }}</td>
+                    <td>{{ comment.nick }}</td>
                     <td>{{ comment.context }}</td>
+                    <td><a href="{{ url('book_show', {title: comment.Book.title}) }}" > {{ comment.Book.title }}</td>
                     <td>
                         <a href="{{ url('comment_show', {id: comment.Id }) }}" title="{{ 'See'|trans }}">
                             {{ 'Show'|trans }}
@@ -42,9 +49,19 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <a href="{{ url('comment_create',{id: random(200, 500) }) }}" title="{{ 'Create'|trans }}">
-            {{ 'Create'|trans }}
-        </a>
+        <p>
+            <a href="{{ url('comment_create') }}" title="{{ 'Leave a comment'|trans }}">
+                {{ 'Leave a comment'|trans }}
+            </a>
+        </p>
+
+        <p><a href="{{ url('catalog_index') }}" title="{{ 'Catalogs'|trans }}">
+                {{ 'Catalogs'|trans }}
+            </a></p>
+
+        <p><a href="{{ url('book_index') }}" title="{{ 'Books'|trans }}">
+                {{ 'Books'|trans }}
+            </a></p>
     {% else %}
         <p>
             {{ 'Empty'|trans }}
