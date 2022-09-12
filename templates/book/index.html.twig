@@ -26,14 +26,13 @@
             {% for book in pagination.items %}
                 <tr>
                     <td>{{ book.Id }}</td>
-                    <td>{{ book.Title }}</td>
+                    <td><a href="{{ url('comment_index', {'filters.book_id' : book.id}) }}" title="{{ book.Title }}">
+                            {{ book.Title }}
+                        </a></td>
                     <td>{{ book.Author }}</td>
                     <td>{{ book.Catalog.name }}</td>
                     <td>{{ book.CreatedAt|date('Y.m.d') }}</td>
                     <td>
-                        <a href="{{ url('book_show', {title: book.Title }) }}" title="{{ 'See'|trans }}">
-                            {{ 'Show'|trans }}
-                        </a>
                         <a href="{{ url('book_edit', {id: book.Id }) }}" title="{{ 'Edit'|trans }}">
                             {{ 'Edit'|trans }}
                         </a>
@@ -59,6 +58,9 @@
         <p><a href="{{ url('comment_index') }}" title="{{ 'Comments'|trans }}">
             {{ 'Comments'|trans }}
         </a></p>
+
+
+
     {% else %}
         <p>
             {{ 'Empty'|trans }}

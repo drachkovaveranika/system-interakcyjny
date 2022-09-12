@@ -23,11 +23,10 @@
             {% for catalog in pagination.items %}
                 <tr>
                     <td>{{ catalog.Id }}</td>
-                    <td>{{ catalog.Name }}</td>
+                    <td><a href="{{ url('book_index', {'filters.catalog_id' : catalog.id}) }}" title="{{ catalog.Name }}">
+                        {{ catalog.Name }}
+                    </a></td>
                     <td>
-                        <a href="{{ url('catalog_show', {id: catalog.Id }) }}" title="{{ 'See'|trans }}">
-                            {{ 'Show'|trans }}
-                        </a>
                         <a href="{{ url('catalog_edit', {id: catalog.Id }) }}" title="{{ 'Edit'|trans }}">
                             {{ 'Edit'|trans }}
                         </a>

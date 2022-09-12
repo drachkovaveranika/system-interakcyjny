@@ -11,9 +11,6 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <a href="{{ url('comment_create') }}" title="{{ 'Create'|trans }}">
-            {{ 'Create'|trans }}
-        </a>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -30,7 +27,7 @@
                     <td>{{ comment.Id }}</td>
                     <td>{{ comment.nick }}</td>
                     <td>{{ comment.context }}</td>
-                    <td><a href="{{ url('book_show', {title: comment.Book.title}) }}" > {{ comment.Book.title }}</td>
+                    <td>{{ comment.Book.title }}</td>
                     <td>
                         <a href="{{ url('comment_show', {id: comment.Id }) }}" title="{{ 'See'|trans }}">
                             {{ 'Show'|trans }}

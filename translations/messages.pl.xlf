@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="Books">
+        <source>Books</source>
+        <target>Ksiązki</target>
+      </trans-unit>
+      <trans-unit id="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="Title">
+        <source>Title</source>
+        <target>Tytuł</target>
+      </trans-unit>
+      <trans-unit id="Author">
+        <source>Author</source>
+        <target>Autor</target>
+      </trans-unit>
+      <trans-unit id="Catalog">
+        <source>Catalog</source>
+        <target>Katalog</target>
+      </trans-unit>
+      <trans-unit id="Actions">
+         <source>Actions</source>
+         <target>Dzialania</target>
+      </trans-unit>
+      <trans-unit id="See">
+        <source>See</source>
+        <target>Zobacz</target>
+      </trans-unit>
+      <trans-unit id="Edit">
+        <source>Edit</source>
+        <target>Edytuj</target>
+      </trans-unit>
+      <trans-unit id="Delete">
+        <source>Delete</source>
+        <target>Usun</target>
+      </trans-unit>
+      <trans-unit id="Create">
+        <source>Create</source>
+        <target>Stwórz</target>
+      </trans-unit>
+      <trans-unit id="Empty">
+       <source>Empty</source>
+       <target>Pusta</target>
+      </trans-unit>
+    <trans-unit id="Create new book">
+       <source>Create new book</source>
+       <target>Stwórz nową ksiązkę</target>
+    </trans-unit>
+     <trans-unit id="save">
+           <source>save</source>
+           <target>Zachowaj</target>
+        </trans-unit>
+     <trans-unit id="back to list">
+             <source>back to list</source>
+        <target>Do listy</target>
+     </trans-unit>
+     <trans-unit id="Show">
+          <source>Show</source>
+          <target>Pokaz</target>
+     </trans-unit>
+      <trans-unit id="Log in!">
+              <source>Log in!</source>
+              <target>Zaloguj się!</target>
+      </trans-unit>
+      <trans-unit id="Password">
+        <source>Password</source>
+        <target>Hasło</target>
+      </trans-unit>
+      <trans-unit id="Please sign in">
+        <source>Please sign in</source>
+        <target>Logowanie</target>
+      </trans-unit>
+      <trans-unit id="Sign in">
+              <source>Sign in</source>
+              <target>Zaloguj</target>
+      </trans-unit>
+      <trans-unit id="Volume">
+              <source>Volume</source>
+              <target>Ksiązka</target>
+      </trans-unit>
+      <trans-unit id="back">
+             <source>back</source>
+             <target>Do listy</target>
+      </trans-unit>
+      <trans-unit id="comments">
+              <source>comments</source>
+              <target>Komentarzy</target>
+      </trans-unit>
+      <trans-unit id="title.book_edit">
+               <source>title.book_edit</source>
+               <target>Edytuj</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+               <source>action.edit</source>
+               <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_list">
+               <source>action.back_to_list</source>
+               <target>Do listy</target>
+      </trans-unit>
+      <trans-unit id="Delete book">
+               <source>Delete book</source>
+               <target>Usuń ksiązkę</target>
+      </trans-unit>
+      <trans-unit id="Catalogs">
+               <source>Catalogs</source>
+               <target>Katalogi</target>
+      </trans-unit>
+      <trans-unit id="name">
+               <source>name</source>
+               <target>Nazwa</target>
+      </trans-unit>
+      <trans-unit id="created successfully">
+                     <source>created successfully</source>
+                     <target>pomyślnie utworzono</target>
+            </trans-unit>
+
+      <trans-unit id="edited successfully">
+                     <source>edited successfully</source>
+                     <target>pomyślnie zedytowano</target>
+            </trans-unit>
+      <trans-unit id="deleted successfully">
+           <source>deleted successfully</source>
+           <target>pomyślnie usunięto</target>
+      </trans-unit>
+<trans-unit id="delete">
+    <source>delete</source>
+    <target>usuń</target>
+</trans-unit>
+<trans-unit id="Create new catalog">
+    <source>Create new catalog</source>
+    <target>Stwórz nowy katalog</target>
+</trans-unit>
+<trans-unit id="catalog delete">
+    <source>catalog delete</source>
+    <target>Usuń katalog</target>
+</trans-unit>
+<trans-unit id="edit">
+    <source>edit</source>
+    <target>Edytuj</target>
+</trans-unit>
+<trans-unit id="Create new comment">
+    <source>Create new comment</source>
+    <target>Stwórz nowy komentarz</target>
+</trans-unit>
+<trans-unit id="Delete comment">
+    <source>Delete comment</source>
+    <target>Usuń komentarz</target>
+</trans-unit>
+<trans-unit id="Edit comment">
+    <source>Edit comment</source>
+    <target>Edytuj komentarz</target>
+</trans-unit>
+<trans-unit id="Comments">
+    <source>Comments</source>
+    <target>Komentarze</target>
+</trans-unit>
+<trans-unit id="Context">
+    <source>Context</source>
+    <target>Treść</target>
+</trans-unit>
+<trans-unit id="Comment">
+    <source>Comment</source>
+    <target>Komentarz</target>
+</trans-unit>
+<trans-unit id="message.form_error">
+    <source>message.form_error</source>
+    <target>Błąd</target>
+</trans-unit>
+<trans-unit id="You are logged in as">
+    <source>You are logged in as</source>
+    <target>Jesteś zalogowany jak</target>
+</trans-unit>
+<trans-unit id="actin_logout">
+    <source>action_logout</source>
+    <target>Wyloguj</target>
+</trans-unit>
+<trans-unit id="actin_login">
+    <source>action_login</source>
+    <target>Zaloguj</target>
+</trans-unit>
+<trans-unit id="Logout">
+    <source>Logout</source>
+    <target>Wyloguj</target>
+</trans-unit>
+<trans-unit id="action_change_password">
+    <source>action_change_password</source>
+    <target>Zmień haslo</target>
+</trans-unit>
+<trans-unit id="CreatedAt">
+    <source>CreatedAt</source>
+    <target>Data utworzenia</target>
+</trans-unit>
+<trans-unit id="Leave a comment">
+    <source>Leave a comment</source>
+    <target>Zostaw komentarz</target>
+</trans-unit>
+<trans-unit id="Nick">
+    <source>Nick</source>
+    <target>Nick</target>
+</trans-unit>
+    </body>
+
+  </file>
+</xliff>

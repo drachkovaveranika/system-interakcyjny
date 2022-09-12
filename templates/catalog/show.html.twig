@@ -18,6 +18,9 @@
                 {{ 'back'|trans }}
             </a>
         </p>
+        <a href="{{ url('book_index', {'filters.catalog_id' : book.catalog.id}) }}" title="{{ book.catalog.name }}">
+            {{ book.catalog.name }}
+        </a>
     {% else %}
         <p>
             {{ 'Empty'|trans }}
