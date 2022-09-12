@@ -3,6 +3,7 @@
 /*
  * Catalog Entity.
  */
+
 namespace App\Entity;
 
 use App\Repository\CatalogRepository;
@@ -34,7 +35,7 @@ class Catalog
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 1, max: 64)]
     private ?string $name = null;
 
     /**

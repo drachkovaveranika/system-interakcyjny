@@ -13,6 +13,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * Class BookRepository.
@@ -26,6 +27,11 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BookRepository extends ServiceEntityRepository
 {
+    /**
+     * Paginator.
+     */
+    private PaginatorInterface $paginator;
+
     /**
      * Items per page.
      *
@@ -50,18 +56,25 @@ class BookRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
+     * @param array<string, object> $filters Filters
+     *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(array $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
-            ->select('book', 'catalog')
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select(
+                'partial book.{id, createdAt, title, author}',
+                'partial catalog.{id, name}'
+            )
             ->join('book.catalog', 'catalog')
             ->orderBy('book.id', 'ASC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     /**
-     * Count books by category.
+     * Count books by catalog.
      *
      * @param Catalog $catalog Catalog
      *
@@ -113,5 +126,23 @@ class BookRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('book');
+    }
+
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['catalog']) && $filters['catalog'] instanceof Catalog) {
+            $queryBuilder->andWhere('catalog = :catalog')
+                ->setParameter('catalog', $filters['catalog']);
+        }
+
+        return $queryBuilder;
     }
 }

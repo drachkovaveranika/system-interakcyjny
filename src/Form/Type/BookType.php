@@ -41,7 +41,7 @@ class BookType extends AbstractType
                     '%title%' => 'Tytuł',
                 ],
                 'required' => true,
-                'attr' => ['max_length' => 255],
+                'attr' => ['min_length' => 5],
             ]
         );
         $builder->add(
@@ -53,7 +53,7 @@ class BookType extends AbstractType
                     '%author%' => 'Autor',
                 ],
                 'required' => true,
-                'attr' => ['max_length' => 255],
+                'attr' => ['min_length' => 5],
             ]
         );
         $builder->add(
@@ -68,7 +68,7 @@ class BookType extends AbstractType
                 'label_translation_parameters' => [
                     '%catalog%' => 'Katalog',
                 ],
-                'required' => false,
+                'required' => true,
             ]
         );
     }

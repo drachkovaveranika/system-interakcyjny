@@ -30,7 +30,7 @@ class CatalogRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 3;
+    public const PAGINATOR_ITEMS_PER_PAGE = 5;
 
     /**
      * Constructor.
@@ -50,7 +50,7 @@ class CatalogRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->select('catalog')
+            ->select('partial catalog.{id, name}')
             ->orderBy('catalog.id', 'ASC');
     }
 

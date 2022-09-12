@@ -55,7 +55,7 @@ class Comment
     #[ORM\Column(length: 15)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 5, max: 64)]
+    #[Assert\Length(min: 1, max: 64)]
     private ?string $nick = null;
 
     /**
@@ -64,7 +64,7 @@ class Comment
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 5, max: 64)]
+    #[Assert\Length(min: 1, max: 64)]
     private ?string $email = null;
 
     /**

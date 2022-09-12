@@ -9,6 +9,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Form\Type\BookType;
 use App\Service\BookServiceInterface;
+use App\Service\CatalogServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,15 +34,22 @@ class BookController extends AbstractController
     private TranslatorInterface $translator;
 
     /**
+     * Catalog Service.
+     */
+    private CatalogServiceInterface $catalogService;
+
+    /**
      * Constructor.
      *
-     * @param BookServiceInterface $bookService Book service
-     * @param TranslatorInterface  $translator  Translator
+     * @param BookServiceInterface    $bookService    Book service
+     * @param TranslatorInterface     $translator     Translator
+     * @param CatalogServiceInterface $catalogService CatalogService
      */
-    public function __construct(BookServiceInterface $bookService, TranslatorInterface $translator)
+    public function __construct(BookServiceInterface $bookService, TranslatorInterface $translator, CatalogServiceInterface $catalogService)
     {
         $this->bookService = $bookService;
         $this->translator = $translator;
+        $this->catalogService = $catalogService;
     }
 
     /**
@@ -54,8 +62,10 @@ class BookController extends AbstractController
     #[Route(name: 'book_index', methods: 'GET')]
     public function index(Request $request): Response
     {
+        $filters = $this->getFilters($request);
         $pagination = $this->bookService->getPaginatedList(
-            $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1),
+            $filters
         );
 
         return $this->render('book/index.html.twig', ['pagination' => $pagination]);
@@ -68,7 +78,7 @@ class BookController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{title}', name: 'book_show', methods: 'GET')]
+    #[Route('/{id}', name: 'book_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(Book $book): Response
     {
         return $this->render('book/show.html.twig', ['book' => $book]);
@@ -186,5 +196,22 @@ class BookController extends AbstractController
                 'book' => $book,
             ]
         );
+    }
+
+    /**
+     * Get filters from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return array<string, int> Array of filters
+     *
+     * @psalm-return array{catalog_id: int, status_id: int}
+     */
+    private function getFilters(Request $request): array
+    {
+        $filters = [];
+        $filters['catalog_id'] = $request->query->getInt('filters_catalog_id');
+
+        return $filters;
     }
 }

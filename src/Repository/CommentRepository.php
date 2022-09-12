@@ -6,6 +6,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Book;
 use App\Entity\Comment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -32,7 +33,7 @@ class CommentRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 5;
 
     /**
      * Constructor.
@@ -47,14 +48,23 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
+     * @param array<string, object> $filters Filters
+     *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(array $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
-            ->select('comment')
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->select(
+                'partial comment.{id, nick, context}',
+                'partial book.{id, title}'
+            )
+            ->join('comment.book', 'book')
             ->orderBy('comment.id', 'ASC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
+
 
     /**
      * Save entity.
@@ -88,5 +98,23 @@ class CommentRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('comment');
+    }
+
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['book']) && $filters['book'] instanceof Book) {
+            $queryBuilder->andWhere('book = :book')
+                ->setParameter('book', $filters['book']);
+        }
+
+        return $queryBuilder;
     }
 }

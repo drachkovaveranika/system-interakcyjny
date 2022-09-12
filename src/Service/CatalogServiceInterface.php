@@ -37,4 +37,10 @@ interface CatalogServiceInterface
      */
     public function delete(Catalog $catalog): void;
 
+    /**
+     * Find one by id.
+     *
+     * @param int $id catalog id
+     */
+    public function findOneById(int $id): ?Catalog;
 }

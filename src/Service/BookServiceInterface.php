@@ -36,4 +36,11 @@ interface BookServiceInterface
      * @param Book $book Book entity
      */
     public function delete(Book $book): void;
+
+    /**
+     * Find one by title.
+     *
+     * @param int $id Book id
+     */
+    public function findOneById(int $id): ?Book;
 }

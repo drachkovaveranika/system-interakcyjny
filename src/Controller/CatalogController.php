@@ -62,24 +62,6 @@ class CatalogController extends AbstractController
     }
 
     /**
-     * Show action.
-     *
-     * @param Catalog $catalog Catalog
-     *
-     * @return Response HTTP response
-     */
-    #[Route(
-        '/{id}',
-        name: 'catalog_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
-    public function show(Catalog $catalog): Response
-    {
-        return $this->render('catalog/show.html.twig', ['catalog' => $catalog]);
-    }
-
-    /**
      * Create action.
      *
      * @param Request $request HTTP request

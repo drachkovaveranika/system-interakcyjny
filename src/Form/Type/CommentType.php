@@ -10,6 +10,7 @@ use App\Entity\Comment;
 use App\Entity\Book;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -46,7 +47,7 @@ class CommentType extends AbstractType
         );
         $builder->add(
             'email',
-            TextType::class,
+            EmailType::class,
             [
                 'label' => '%email%',
                 'label_translation_parameters' => [

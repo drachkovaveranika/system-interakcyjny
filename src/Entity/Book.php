@@ -36,7 +36,7 @@ class Book
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 5, max: 64)]
+    #[Assert\Length(min: 1, max: 64)]
     private ?string $title = null;
 
     /**
@@ -45,7 +45,7 @@ class Book
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Length(min: 5, max: 64)]
+    #[Assert\Length(min: 1, max: 64)]
     private ?string $author = null;
 
     /**

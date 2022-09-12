@@ -8,6 +8,7 @@ namespace App\Service;
 
 use App\Entity\Catalog;
 use App\Repository\CatalogRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -72,5 +73,19 @@ class CatalogService implements CatalogServiceInterface
     public function delete(Catalog $catalog): void
     {
         $this->catalogRepository->delete($catalog);
+    }
+
+    /**
+     * Find by id.
+     *
+     * @param int $id Catalog id
+     *
+     * @return Catalog|null Catalog entity
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id): ?Catalog
+    {
+        return $this->catalogRepository->findOneById($id);
     }
 }
