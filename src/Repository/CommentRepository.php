@@ -65,7 +65,6 @@ class CommentRepository extends ServiceEntityRepository
         return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
-
     /**
      * Save entity.
      *
